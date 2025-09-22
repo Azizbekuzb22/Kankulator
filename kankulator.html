@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toraqulov Aziz - Valyuta va Tillar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 30px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: rgba(0,0,0,0.3);
+      animation: gradientText 5s infinite;
+      background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes gradientText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    h2 {
+      margin-top: 30px;
+      font-size: 1.8rem;
+      text-decoration: underline;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.1);
+      background: rgba(255,255,255,0.2);
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #ff9800;
+      color: white;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #e68900;
+    }
+    .calc {
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 12px;
+      width: 300px;
+    }
+    input, select {
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      margin: 5px;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🌟 Toraqulov Aziz 🌟
+  </header>
+
+  <h2>Pul hisoblash</h2>
+  <div class="calc">
+    <input type="number" id="amount" placeholder="Summani kiriting"><br>
+    <select id="currency">
+      <option value="usd">USD – AQSh dollari</option>
+      <option value="eur">EUR – Yevro</option>
+      <option value="rub">RUB – Rubl</option>
+      <option value="uzs">UZS – So‘m</option>
+      <option value="gbp">GBP – Funt</option>
+    </select><br>
+    <button onclick="convert()">Hisoblash</button>
+    <p id="result"></p>
+  </div>
+
+  <h2>Tillar</h2>
+  <div class="container">
+    <div class="card">🇺🇸 Ingliz tili</div>
+    <div class="card">🇷🇺 Rus tili</div>
+    <div class="card">🇺🇿 O‘zbek tili</div>
+    <div class="card">🇸🇦 Arab tili</div>
+    <div class="card">🇨🇳 Xitoy tili</div>
+    <div class="card">🇯🇵 Yapon tili</div>
+    <div class="card">🇰🇷 Koreys tili</div>
+    <div class="card">🇪🇸 Ispan tili</div>
+    <div class="card">🇫🇷 Fransuz tili</div>
+    <div class="card">🇩🇪 Nemis tili</div>
+    <div class="card">🇹🇷 Turk tili</div>
+    <div class="card">🇮🇹 Italyan tili</div>
+    <div class="card">🇮🇷 Fors tili</div>
+    <div class="card">🇵🇹 Portugal tili</div>
+    <div class="card">🇮🇳 Hind tili</div>
+    <div class="card">🇵🇰 Urdu tili</div>
+    <div class="card">🇧🇩 Bengal tili</div>
+    <div class="card">🇲🇾 Malay tili</div>
+    <div class="card">🇬🇷 Grek tili</div>
+    <div class="card">🇻🇳 Vetnam tili</div>
+  </div>
+
+  <script>
+    function convert() {
+      let amount = document.getElementById("amount").value;
+      let currency = document.getElementById("currency").value;
+      let rate = {
+        usd: 1,
+        eur: 0.92,
+        rub: 93,
+        uzs: 12700,
+        gbp: 0.79
+      };
+      if (amount === "") {
+        document.getElementById("result").innerText = "Iltimos, summa kiriting!";
+        return;
+      }
+      let result = amount * rate[currency];
+      document.getElementById("result").innerText = 
+        amount + " USD ≈ " + result.toFixed(2) + " " + currency.toUpperCase();
+    }
+  </script>
+</body>
+</html>
